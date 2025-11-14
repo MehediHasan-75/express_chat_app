@@ -23,7 +23,6 @@ app.use(express.urlencoded({extended: true}));
 
 //5. set view engine (first create views folder. exprss will search the viwe by default on this folder)
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
 
 //6. set static folders
 app.use(express.static(path.join(__dirname, "public")));
