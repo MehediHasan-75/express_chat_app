@@ -1,6 +1,6 @@
 const createError = require('http-errors')
 
-function notFoundHandler(req, res, next){
+function notFoundHandler(req, res, next){ //custom middleware
     next(createError(404, "Your requested content wast not found!")); 
 }
 
