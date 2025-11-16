@@ -6,6 +6,12 @@
     <title><%= title %></title>
 </head>
 <body>
-    This is error Page
+    <h2>Error Occurred</h2>
+    <p>Status: <%= error.status %></p>
+    <p>Message: <%= error.message %></p>
+
+    <% if (error.stack) { %>
+        <pre><%= error.stack %></pre>
+    <% } %>
 </body>
 </html>
