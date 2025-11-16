@@ -5,7 +5,7 @@ const peopleSchema = mongoose.Schema(
     name: {
       type: String,
       required: true,
-      trim: true, //remove white spaces from front and back
+      trim: true, 
     },
     email: {
       type: String,
@@ -31,10 +31,10 @@ const peopleSchema = mongoose.Schema(
     },
   },
   {
-    timestamps: true, //save hole created at and updated at duita filed auto create hbe.
+    timestamps: true, 
   }
 );
 const People =
-  mongoose.models.People || mongoose.model("People", peopleSchema); //people namer ekta model create korechi users der jnno
+  mongoose.models.People || mongoose.model("People", peopleSchema); 
 
 module.exports = People;
