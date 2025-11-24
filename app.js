@@ -4,6 +4,9 @@ const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const path = require("path");
 const cookieParser = require("cookie-parser");
+const http = require("http");
+const moment = require("moment");
+
 
 //internal imports
 const {notFoundHandler, errorHandler} = require("./middlewares/common/errorHandler");
@@ -12,7 +15,18 @@ const inboxRouter = require("./router/inboxRouter");
 const usersRouter = require("./router/usersRouter");
 
 const app = express();//1
+const server = http.createServer(app);
+
+
 dotenv.config(); //2. this will eable access using process.env.varaible nave trhougth the app
+
+// socket creation
+const io = require("socket.io")(server);
+global.io = io;
+
+// set comment as app locals
+app.locals.moment = moment;
+
 
 
 //3. database connection
@@ -46,9 +60,9 @@ app.use(notFoundHandler)
 app.use(errorHandler)
 
 //10. post listeeing
-app.listen(process.env.PORT, ()=> {
+server.listen(process.env.PORT, () => {
     console.log(`app listening to port ${process.env.PORT}`);
-})
+  });
 
 
 
